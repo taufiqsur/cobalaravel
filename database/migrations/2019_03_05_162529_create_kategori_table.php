@@ -17,7 +17,7 @@ class CreateKategoriTable extends Migration
             $table->increments('id');
             $table->char('nama_kategori', 100);
             $table->char('slug', 100);
-            $table->timestamps('waktu_posting');
+            $table->timestamp('waktu_posting');
         });
     }
 

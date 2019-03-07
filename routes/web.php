@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('kategori', function(){
+    return "hello user with id";
+});
+Route::get('detail_kategori/{id_kategori}', function($id_kategori){
+    return "hello user with id_kategori" . $id_kategori;
+});
+Route::resource('film', 'FilmController')->except(['destroy']);
+Route::resource('kategori', 'KategoriController')->except(['destroy']);
+Route::resource('transaksi', 'TransaksiController')->except(['destroy']);

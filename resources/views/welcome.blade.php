@@ -30,6 +30,7 @@
                                     i'm Videographer & Photographer.
                                     Founder in Momentcare.std
                                 </p>
+                                <a href="{{url('film')}}">Table Film</a>
                             </div>
                         </div>
                         <nav>

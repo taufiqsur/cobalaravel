@@ -15,10 +15,10 @@ class CreateTransaksiTable extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->increments('id_transaksi');
-            $table->integer('id_film', 100);
+            $table->string('id_film', 100);
             $table->string('nama_pelanggan',100);
             $table->double('no_ktp');
-            $table->timestap('tgl_pinjaman');
+            $table->date('tgl_pinjaman');
             $table->date('tgl_kembali');
             $table->double('harga');
             $table->char('status',100);
