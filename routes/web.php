@@ -28,3 +28,6 @@ Route::get('master', function(){
     return view('Dashboard.index');
 });
 
+Route::get('template', function(){
+    return view('dashboard.content');
+  });

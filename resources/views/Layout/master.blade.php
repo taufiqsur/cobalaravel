@@ -10,7 +10,7 @@
 </head>
 <body bgcolor="green">
     <center><h1>Master</h1></center>
-    <table border="1" width="100%" height="600px">
+    <table border="1" width="100%" height="600px" style="border-collapse: collapse;">
     <tr>
         <td style="width: 25%">@include('layout.sidebar')</td>
         <td style="width: 75%">@yield('content')</td>
