@@ -23,3 +23,8 @@ Route::get('detail_kategori/{id_kategori}', function($id_kategori){
 Route::resource('film', 'FilmController')->except(['destroy']);
 Route::resource('kategori', 'KategoriController')->except(['destroy']);
 Route::resource('transaksi', 'TransaksiController')->except(['destroy']);
+
+Route::get('master', function(){
+    return view('Dashboard.index');
+});
+
