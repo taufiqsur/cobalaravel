@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\FilmModel;
+use App\KategoriModel;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FilmController extends Controller
 {
@@ -13,11 +14,11 @@ class FilmController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(\Illuminate\Http\Request $request)
     {
-        //return FilmModel::all()->toArray();
-        $varFilm = FilmModel::all();
-        return view('film', compact('varFilm'));
+       
+
+        
     }
 
     /**
@@ -38,7 +39,8 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-        //
+     
+       
     }
 
     /**
@@ -60,7 +62,7 @@ class FilmController extends Controller
      */
     public function edit($id)
     {
-        //
+       
     }
 
     /**
@@ -70,9 +72,9 @@ class FilmController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+     
     }
 
     /**
@@ -83,6 +85,6 @@ class FilmController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

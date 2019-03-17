@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\KategoriModel;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KategoriController extends Controller
 {
@@ -13,9 +14,19 @@ class KategoriController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(\Illuminate\Http\Request $request)
     {
-        return KategoriModel::all()->toArray();
+        //return FilmModel::all()->toArray();
+        //$varFilm = FilmModel::all();
+
+        $varKategori = KategoriModel::when($request->keyword, function ($query) use ($request) {
+            $query->where('nama_kategori', 'like', "%{$request->keyword}%");
+                //->orWhere('nama', 'like', "%{$request->keyword}%");
+        })->get();
+
+        return view('dashboard.maincontent', compact('varKategori'));
+
+        
     }
 
     /**
@@ -36,7 +47,15 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+     // insert data ke table kategori
+        DB::table('kategori')->insert([
+        'nama_kategori' => $request->nama_kategori,
+        'slug' => $request->slug,
+        'waktu_posting' => $request->waktu_posting,
+       
+    ]);
+    // alihkan halaman ke halaman pegawai
+    return redirect('/kategori');
     }
 
     /**
@@ -58,7 +77,8 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kategori = DB::table('kategori')->where('id',$id)->get();
+        return view('dashboard.edit',['kategori' => $kategori]);
     }
 
     /**
@@ -68,9 +88,15 @@ class KategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        DB::table('kategori')->where('id',$request->id)->update([
+            'nama_kategori' => $request->nama_kategori,
+            'slug' => $request->slug
+       
+        ]);
+   
+        return redirect('/kategori');
     }
 
     /**
@@ -81,6 +107,7 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('kategori')->where('id', $id)->delete();
+            return redirect('/kategori');
     }
 }
